@@ -30,11 +30,13 @@ class Renderer:
 
         if z > 0:
             scale = 1 / z
-            x_screen = int(x * scale * self.width / 2 + self.width / 2)
-            y_screen = int(-y * scale * self.height / 2 + self.height / 2)
+            # Apply zoom factor to the projection
+            x_screen = int(x * scale * camera.zoom * self.width / 2 + self.width / 2)
+            y_screen = int(-y * scale * camera.zoom * self.height / 2 + self.height / 2)
             return x_screen, y_screen
         else:
             return None
+
 
     def get_rotation_matrix(self, rot):
         yaw, pitch, roll = rot

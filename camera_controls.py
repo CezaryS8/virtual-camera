@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 
+ZOOM_SPEED = 0.1
+
 def handle_controls(camera):
     key_state = pygame.key.get_pressed()
 
@@ -29,3 +31,8 @@ def handle_controls(camera):
         camera.rotate(0.01, 0, 0)
     if key_state[K_e]:
         camera.rotate(-0.01, 0, 0)
+
+    if key_state[K_EQUALS] or key_state[K_PLUS]:
+        camera.zoom_in()
+    if key_state[K_MINUS]:
+        camera.zoom_out()
